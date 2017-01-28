@@ -16,9 +16,9 @@ describe './lib/tic_tac_toe.rb' do
       it 'checks if the game is over after every turn' do
         game = TicTacToe.new
         allow($stdout).to receive(:puts)
-        allow(game).to receive(:gets).and_return("1", "2", "3")
+        allow(game).to receive(:gets).and_return("1", "4", "2", "5", "3")
 
-        expect(game).to receive(:over?).at_least(:twice).and_return(false, false, true)
+        expect(game).to receive(:over?).at_least(:twice).and_return(false, false, false, false, true)
 
         game.play
       end
