@@ -1,5 +1,5 @@
 class TicTacToe
-  
+
   WIN_COMBINATIONS = [
     [0,1,2],
     [3,4,5],
@@ -24,7 +24,7 @@ class TicTacToe
   end
 
   def input_to_index(input)
-    index = input.to_i - 1  
+    index = input.to_i - 1
   end
 
   def move(index, token = "X")
@@ -62,10 +62,10 @@ class TicTacToe
         victory = combination
         break
       end
-    end  
+    end
     return victory
   end
-  
+
   def full?
     is_full = @board.all? do |block|
       block == "X" || block == "O"
@@ -116,7 +116,7 @@ class TicTacToe
       victor = winner
       puts "Congratulations #{victor}!"
     else
-      puts "Cats Game!"
+      puts "Cat's Game!"
     end
   end
 end
