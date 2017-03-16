@@ -42,7 +42,7 @@ class TicTacToe
   def valid_move?(index)
     !(index < 0 || index > 8 || position_taken?(index))
   end
-  end
+
 
   # Asks the player to make the turn.
   def turn
@@ -118,11 +118,13 @@ class TicTacToe
   # Plays the game.
   def play
     until over? { turn }
-    if won?
-      puts("Congratulations #{winner}!")
-    elsif draw?
-      puts("Cat's Game!")
+      if won?
+        puts("Congratulations #{winner}!")
+      elsif draw?
+        puts("Cat's Game!")
+      end
     end
+
   end
 
 end
