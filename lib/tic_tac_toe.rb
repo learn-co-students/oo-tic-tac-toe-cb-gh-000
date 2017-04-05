@@ -1,6 +1,7 @@
 class TicTacToe
   def initialize
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    @board = [' ', ' ', ' ', ' ', ' ',
+              ' ', ' ', ' ', ' ']
   end
 
   WIN_COMBINATIONS = [
@@ -11,7 +12,7 @@ class TicTacToe
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [2, 4, 6]
+      [2, 4, 6],
   ]
 
   # Checks if the position is taken.
@@ -60,11 +61,11 @@ class TicTacToe
   # Counts the turns played.
   def turn_count
     count = 0
-    @board.each { |element|
+    @board.each do |element|
       if element == 'X' || element == 'O'
         count += 1
       end
-    }
+    end
     count
   end
 
@@ -84,12 +85,9 @@ class TicTacToe
       position_2 = @board[win_index_2]
       position_3 = @board[win_index_3]
 
-      if position_1 == 'X' && position_2 == 'X' &&
-          position_3 == 'X'
-        return win_combination
-      elsif position_1 == 'O' && position_2 == 'O' &&
-          position_3 == 'O'
-        return win_combination
+      if (position_1 == 'X' && position_2 == 'X' && position_3 == 'X')
+        || (position_1 == 'O' && position_2 == 'O' && position_3 == 'O')
+        win_combination
       end
     end
     false
@@ -107,7 +105,7 @@ class TicTacToe
 
   # Checks if the game is over.
   def over?
-    full? || won? || draw?
+    full? || won?
   end
 
   # Finds the winner of the game.
@@ -123,7 +121,7 @@ class TicTacToe
     if won?
       puts("Congratulations #{winner}!")
     elsif draw?
-      puts("Cat's Game!")
+      puts("Cat's Game.")
     end
   end
 
