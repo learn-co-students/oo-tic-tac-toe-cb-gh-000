@@ -7,7 +7,7 @@ describe "bin/tictactoe" do
 
     expect(TicTacToe).to receive(:new).and_return(game)
 
-    run_file("./bin/tictactoe")
+    run_file("./bin/tictactoe.rb")
   end
 
   it 'calls #play on the instance of TicTacToe' do
@@ -16,6 +16,6 @@ describe "bin/tictactoe" do
 
     expect(TicTacToe).to receive(:new).and_return(game)
     expect(game).to receive(:play)
-    run_file("./bin/tictactoe")
+    run_file("./bin/tictactoe.rb")
   end
 end
