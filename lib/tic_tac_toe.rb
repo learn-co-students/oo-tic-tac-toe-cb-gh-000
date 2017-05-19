@@ -103,7 +103,8 @@ class TicTacToe
 
 
   def play ()
-    until over? do
+    # Tests fails if we use over?().
+    until over?
       turn()
     end
 
