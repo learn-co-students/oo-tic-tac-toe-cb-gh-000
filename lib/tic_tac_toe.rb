@@ -57,6 +57,7 @@ class TicTacToe
   end
 
   def turn
+    print "Player #{current_player}, place your piece on grids 1-9:"
     input = gets.strip
     index = input_to_index(input)
     player = current_player
