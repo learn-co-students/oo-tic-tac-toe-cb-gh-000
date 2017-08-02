@@ -13,8 +13,6 @@ require 'pry'
 # Load up the lib file containing all of the programming.
 require_relative '../lib/tic_tac_toe.rb'
 
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-
 puts "Welcome to Tic Tac Toe!"
 
 # Create a new instance of the TicTacToe class to use.
