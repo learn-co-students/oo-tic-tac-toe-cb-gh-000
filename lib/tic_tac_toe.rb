@@ -110,6 +110,8 @@ def winner()
 end
 
 def play()
+  puts "Welcome to Tic Tac Toe!"
+  display_board()
   until over?()
     turn()
   end
