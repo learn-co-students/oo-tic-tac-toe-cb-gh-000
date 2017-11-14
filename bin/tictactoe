@@ -6,11 +6,4 @@ puts "Welcome to Tic Tac Toe!"
 game=TicTacToe.new
 game.display_board
 
-puts game.full?
-puts !!game.won?
-puts game.draw?
-puts !(!!game.won?)&&game.full?
-puts game.over?
-puts (!!game.won?)||game.draw?
-
 game.play
