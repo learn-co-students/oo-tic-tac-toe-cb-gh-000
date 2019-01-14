@@ -1,14 +1,5 @@
 class TicTacToe
-  WIN_COMBINATIONS = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [6,4,2],
-    [0,3,6]
-  ]
+  WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[1,4,7],[2,5,8],[0,4,8],[6,4,2],[0,3,6]]
   def initialize(board=nil)
     @board=Array.new(9," ") || board
   end
@@ -22,18 +13,11 @@ class TicTacToe
   end
 
   def valid_move?(index)
-    if index.between?(0,8)
-      return !position_taken?(index)
-    end
-    false
+    index.between?(0,8) && !position_taken?(index)
   end
 
   def position_taken?(index)
-    temp=@board[index]
-    if temp==" "||temp==""||temp==nil
-      return false
-    end
-    true
+    !(@board[index].nil? || @board[index] == " ")
   end
 
   def move(index,token)
@@ -66,12 +50,8 @@ class TicTacToe
   end
 
   def current_player
-    if turn_count.even?
-      return "X"
-    end
-    "O"
+    turn_count.even? ? "X" : "O"
   end
-
 
   def won?
     WIN_COMBINATIONS.each do |combo|
@@ -95,21 +75,13 @@ class TicTacToe
   end
 
   def winner
-    if !won?
-      return nil
-    end
-    @board[won?[0]]
+    !won? ? nil : @board[won?[0]]
   end
 
   def play
     until over?
       turn
     end
-
-    if !!won?
-      puts "Congratulations #{winner}!"
-    elsif draw?
-      puts "Cat\'s Game!"
-    end
+    won? ? puts("Congratulations #{winner}!") : puts("Cat's Game!")
   end
 end
