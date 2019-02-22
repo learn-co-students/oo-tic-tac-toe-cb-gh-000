@@ -1,6 +1,12 @@
 class TicTacToe
-  def initialize
-    @board=Array.new(9," ")
+  def initialize(board=[" "," "," "," "," "," "," "," "," "])
+    @board=board
+  end
+  def board=(board)
+    @board=board
+  end
+  def board()
+    @board
   end
 
 WIN_COMBINATIONS=[
@@ -14,7 +20,7 @@ WIN_COMBINATIONS=[
   [2,4,6]
 ]
 
- def display_board
+ def display_board()
   puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
   puts "-----------"
   puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
@@ -23,7 +29,7 @@ WIN_COMBINATIONS=[
  end
 
  def input_to_index(user_input)
-  index=user_input.to_i-1
+  user_input.to_i-1
  end
 
  def move(index,token="X")
@@ -41,14 +47,14 @@ WIN_COMBINATIONS=[
  def turn_count()
    return @board.reject do|rejected_array|
      rejected_array==" "
-   end.size
+     end.size
  end
 
  def current_player()
    turn_count()%2==0?"X":"O"
  end
 
- def turn
+ def turn()
    loop_variable=0
   until loop_variable==1
    puts "Enter number 1-9:"
@@ -63,23 +69,21 @@ WIN_COMBINATIONS=[
  end
 
  def won?()
-     won = 0
+   check=0
      WIN_COMBINATIONS.each do |win_combination|
+       win_index_1 = win_combination[0]
+       win_index_2 = win_combination[1]
+       win_index_3 = win_combination[2]
 
-     win_index_1 = win_combination[0]
-     win_index_2 = win_combination[1]
-     win_index_3 = win_combination[2]
-
-     position_1 = @board[win_index_1]
-     position_2 = @board[win_index_2]
-     position_3 = @board[win_index_3]
-
+       position_1 = @board[win_index_1]
+       position_2 = @board[win_index_2]
+       position_3 = @board[win_index_3]
        if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
-         won = 1
+         check=1
          return win_combination
        end
-    end
-    if won == 0
+     end
+    if check==0
       return false
     end
  end
@@ -90,20 +94,20 @@ WIN_COMBINATIONS=[
    end
  end
 
- def draw?
+ def draw?()
    !won?()&&full?()
  end
 
  def over?()
-   won?()||full?()
+   won?()||draw?()
  end
 
  def winner()
    win=won?()
    if win!=false
-     @board[win[0]]
+     return @board[win[0]]
    else
-     nil
+     return nil
    end
  end
 
@@ -112,7 +116,7 @@ WIN_COMBINATIONS=[
      turn()
    end
    if won?()
-     puts "Congratulation #{winner()}!"
+     puts "Congratulations "+winner()+"!"
    else
      puts "Cat's Game!"
    end
