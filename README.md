@@ -1,6 +1,6 @@
 # OO Tic Tac Toe
 
-Šolski projekt, po navodilih. 
+Šolski projekt, po navodilih. Ker je bila pomembna sintaksa, za opravljanje vnaprej izdelanih testov. 
 
 ## Objectives
 
