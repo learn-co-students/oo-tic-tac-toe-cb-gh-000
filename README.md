@@ -1,5 +1,7 @@
 # OO Tic Tac Toe
 
+Šolski projekt, po navodilih. 
+
 ## Objectives
 
 1. Build a CLI Tic Tac Toe game!
