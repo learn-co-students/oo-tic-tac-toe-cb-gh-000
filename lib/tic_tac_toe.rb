@@ -1,19 +1,18 @@
 class TicTacToe
+  WIN_COMBINATIONS = [
+      [0,1,2], # Top row
+      [3,4,5], # Middle row
+      [6,7,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [0,4,8],
+      [6,4,2]
+  ]
   # Define your WIN_COMBINATIONS constant
-
-
   def initialize
     @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    @WIN_COMBINATIONS = [
-        [0,1,2], # Top row
-        [3,4,5], # Middle row
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [6,4,2]
-      ]
+
   end
 
   def display_board
@@ -49,12 +48,12 @@ class TicTacToe
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
-    if valid_move?(@board, index)
-      char = current_player(@board)
-      move(@board, index, char)
-      display_board(@board)
+    if valid_move?(index)
+      char = current_player
+      move(index, char)
+      display_board
     else
-      turn(board)
+      turn
     end
   end
 
@@ -69,7 +68,7 @@ class TicTacToe
   end
 
   def current_player
-    if turn_count(@board) % 2 == 0
+    if turn_count % 2 == 0
       "X"
     else
       "O"
@@ -77,7 +76,7 @@ class TicTacToe
   end
 
   def won?(key = 0)
-    @WIN_COMBINATIONS.each do |win_combination|
+    WIN_COMBINATIONS.each do |win_combination|
       win_index_1 = win_combination[0]
       win_index_2 = win_combination[1]
       win_index_3 = win_combination[2]
@@ -111,13 +110,13 @@ class TicTacToe
   end
 
   def draw?
-    !won?(@board) && full?(@board)
+    !won? && full?
   end
 
   def over?
-    if won?(@board) != false
+    if won? != false
       return true # draw
-    elsif won?(@board) == false && full?(@board) == true
+    elsif won? == false && full? == true
       return true # won
     else
       return false # in progress
@@ -125,8 +124,8 @@ class TicTacToe
   end
 
   def winner
-    if won?(@board) != false
-      res = won?(@board, 1)
+    if won? != false
+      res = won?(1)
       return res
     else
       return nil
@@ -134,10 +133,10 @@ class TicTacToe
   end
 
   def play
-    while !over?(@board) && !draw?(@board)
-      turn(@board)
+    while !over? && !draw?
+      turn
     end
-    a = winner(@board)
+    a = winner
     if a == nil
       puts "Cat's Game!"
     else
@@ -148,3 +147,4 @@ class TicTacToe
       end
     end
   end
+end
