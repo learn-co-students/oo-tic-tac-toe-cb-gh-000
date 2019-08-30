@@ -1,3 +1,4 @@
+require 'pry'
 class TicTacToe
   def initialize(board = Array.new(9, " "))
     @board = board
@@ -59,11 +60,26 @@ class TicTacToe
   end
 
   def won?
-    WIN_COMBINATIONS.detect do |combo|
-      @board[combo[0]] == @board[combo[1]] &&
-      @board[combo[1]] == @board[combo[2]] &&
-      position_taken?(combo[0])
+    # WIN_COMBINATIONS.detect do |combo|
+    #   @board[combo[0]] == @board[combo[1]] &&
+    #   @board[combo[1]] == @board[combo[2]] &&
+    #   position_taken?(combo[0])
+    # end
+
+    # OR OTHER SOLUTION
+    WIN_COMBINATIONS.each do |combo|
+      position_0 = combo[0]
+      position_1 = combo[1]
+      position_2 = combo[2]
+
+      if @board[position_0] == "X" && @board[position_1] == "X" && @board[position_2] == "X"
+        return combo
+      elsif @board[position_0] == "O" && @board[position_1] == "O" && @board[position_2] == "O"
+        return combo
+      end
+
     end
+    return false
   end
   
   def full?
