@@ -1,4 +1,7 @@
 class TicTacToe
+  def initialize
+     play
+   end
 
   WIN_COMBINATIONS = [
     [0, 1, 2],
